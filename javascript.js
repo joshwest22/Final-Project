@@ -15,7 +15,7 @@ var popPromise = d3.csv("data/sc-est2018-alldata6.csv");
 mapPromise.then(function(mapData)
 {
     console.log("map data working",mapData);
-    setup(mapData);
+    //setup(mapData);// dont do this until the data is gotten
    
 },
 function(err)
@@ -69,23 +69,22 @@ var getData = function(popData)
     states = [{name: "Alabama", male: [], female: [], all: [], white: [], black: [], asian: [], multiracial: []}] //each array within each state object will need to be summed; I will also have to copy paste the Alabama object for each state
     popData.forEach(function(d)
     {
-        //var state = d.name;
-        console.log(d.AGE);//sets the var state to the name of the state so that state number can be selected in the following if statements
-        if(d.AGE == 40) //this is the average age according to https://datausa.io/profile/cip/computer-science-6
+        console.log(d.POPESTIMATE2017);//used to check if AGE, SEX, POPESTIMATE2017 (Giving numbers, but not the correct ones for POPESTIMATE2017 and sometimes STATE)
+        if(d.AGE == 40) //this is the average age of CS professionals according to https://datausa.io/profile/cip/computer-science-6
             {if(d.SEX = 0)//
                 {states[d.STATE-1].all.push(d.POPESTIMATE2017)} //console log what each of these are
-//             if(d.sex= 1)//male
-//                {states[d.state-1].male.push(d.POPESTIMATE2017)}
-//             if(d.sex = 2)//female
-//                {states[d.state-1].female.push(d.POPESTIMATE2017)}
-//             if(d.race = 1)//white
-//                {states[d.state-1].white.push(d.POPESTIMATE2017)}
-//             if(d.race = 2)//black
-//                {states[d.state-1].black.push(d.POPESTIMATE2017)}
-//             if(d.race = 4)//asian
+//             if(d.SEX= 1)//male
+//                {states[d.STATE-1].male.push(d.POPESTIMATE2017)}
+//             if(d.SEX = 2)//female
+//                {states[d.STATE-1].female.push(d.POPESTIMATE2017)}
+//             if(d.RACE = 1)//white
+//                {states[d.STATE-1].white.push(d.POPESTIMATE2017)}
+//             if(d.RACE = 2)//black
+//                {states[d.STATE-1].black.push(d.POPESTIMATE2017)}
+//             if(d.RACE = 4)//asian
 //                {states[d.state-1].asian.push(d.POPESTIMATE2017)}
-//             if(d.race = 6) //two or more races
-//                {states[d.state-1].multiracial.push(d.POPESTIMATE2017)}
+//             if(d.RACE = 6) //two or more races
+//                {states[d.STATE-1].multiracial.push(d.POPESTIMATE2017)}
             }
     }) ;
     console.log(states)
